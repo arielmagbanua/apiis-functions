@@ -1,2 +1,2 @@
-# -apiis-functions
+# apiis-functions
 The APIIS Firebase functions
