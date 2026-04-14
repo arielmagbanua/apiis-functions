@@ -1,9 +1,9 @@
 # GEMINI.md
 
-This file provides foundational context for AI-assisted development in the `apiis_moodle` project.
+This file provides foundational context for AI-assisted development in the `apiis-functions` project.
 
 ## Project Overview
-`apiis_moodle` is a Firebase-based backend service designed to process data from Moodle. Its primary function is to handle CSV uploads from Moodle quiz results and convert them into structured JavaScript objects for further processing or storage.
+`apiis-functions` is a Firebase-based backend service designed to process Moodle quiz results. Its primary function is to handle CSV uploads from Moodle and convert them into structured JavaScript objects for further processing or storage.
 
 ### Key Technologies
 - **Firebase:** Platform for serverless infrastructure.
@@ -15,7 +15,7 @@ This file provides foundational context for AI-assisted development in the `apii
 
 ## Architecture
 The project is structured as a standard Firebase project:
-- **Root Directory:** Contains project-wide configuration (`firebase.json`, `.firebaserc`, `.gitignore`).
+- **Root Directory:** Contains project-wide configuration (`firebase.json`, `.gitignore`).
 - **`functions/`**: The core backend codebase.
   - **`src/index.ts`**: Main entry point where Cloud Functions are defined.
   - **`lib/`**: Directory for compiled JavaScript (automatically generated during build).
@@ -34,7 +34,6 @@ Development and deployment should be managed from the `functions/` directory.
 | Task | Command | Description |
 | :--- | :--- | :--- |
 | **Linting** | `npm run lint` | Checks code against style rules. |
-| **Linting (Fix)** | `npm run lint -- --fix` | Automatically fixes style violations. |
 | **Build** | `npm run build` | Compiles TypeScript into JavaScript in the `lib/` folder. |
 | **Emulate** | `npm run serve` | Starts the Firebase Functions emulator locally. |
 | **Deploy** | `npm run deploy` | Deploys functions to the Firebase cloud. |
@@ -51,5 +50,4 @@ Development and deployment should be managed from the `functions/` directory.
 
 ## Key Configuration Files
 - `firebase.json`: Defines deployment targets and pre-deployment hooks.
-- `.firebaserc`: Associates the local environment with the `apiis-moodle-2487f` project ID.
 - `functions/tsconfig.json`: Controls the TypeScript compilation process (Target: `es2017`, Module: `NodeNext`).
