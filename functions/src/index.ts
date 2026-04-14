@@ -112,11 +112,15 @@ export const extractDataFromMoodleQuizResults = onRequest(
 
       // sort the results by the grade field name in descending order. Then filter the top scorers
       results.sort((a, b) => {
-        const aGrade = parseFloat(a[gradeFieldName || ""] || "0");
-        const bGrade = parseFloat(b[gradeFieldName || ""] || "0");
+        const aParsedGrade = parseFloat(a[gradeFieldName || ""] || "0.0");
+        const aGrade = Number.isNaN(aParsedGrade) ? 0 : aParsedGrade;
+        const bParsedGrade = parseFloat(b[gradeFieldName || ""] || "0.0");
+        const bGrade = Number.isNaN(bParsedGrade) ? 0 : bParsedGrade;
         return bGrade - aGrade;
       });
       const highestScore = parseInt(results[0][gradeFieldName || ""] || "0");
+
+      // get the top students with the highest score
       const topScorers = results
         .filter((result) => {
           const grade = parseInt(result[gradeFieldName || ""] || "0");
